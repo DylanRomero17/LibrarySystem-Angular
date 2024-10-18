@@ -1,0 +1,30 @@
+<div class="flex flex-column gap-2">
+    <a routerLink="book-form/new" class="p-button font-bold w-max">
+        Create new Book
+    </a>
+    <div class="flex gap-4 flex-wrap">
+        @for (book of books; track book.id) {
+            <p-card header={{book.title}} subheader={{book.author}} [style]="{ width: '360px' }">
+                <ng-template pTemplate="header">
+                    <img alt="Card" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" />
+                </ng-template>
+                <p>
+                    Pages: {{book.pages}}
+                </p>
+                <p>
+                    Price:  {{book.price}}$
+                </p>
+                <ng-template pTemplate="footer">
+                    <div class="flex gap-2 mt-1">
+                        <p-button (onClick)="deleteBook(book.id)" label="Delete" severity="danger" />
+                        <a routerLink="book-form/{{book.id}}" class="p-button font-bold">
+                            Edit
+                        </a>
+                    </div>
+                </ng-template>
+            </p-card>
+            }@empty {
+                <p>Books not found</p>
+            }
+    </div>
+</div>
