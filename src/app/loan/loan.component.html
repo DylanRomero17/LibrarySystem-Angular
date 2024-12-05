@@ -1,0 +1,19 @@
+<div class="flex flex-column gap-2">
+    <a [routerLink]="['/loan-form/new']" class="p-button font-bold w-max"> New Loan
+    </a>
+    <div class="flex gap-4 flex-wrap">
+        @for (loan of loans; track loan.id) {
+            <p-card header={{loan.id}} subheader={{loan.loanStatus}} [style]="{ width: '260px' }">
+                <ng-template pTemplate="footer">
+                    <div class="flex gap-2">
+                        <p-button (onClick)="deleteLoan(loan.id)" label="Delete" severity="danger" />
+                        <a [routerLink]="['/loan-form', loan.id]" class="p-button font-bold"> Edit
+                        </a>
+                    </div>
+                </ng-template>
+            </p-card>
+            }@empty {
+                <p>Users not found</p>
+            }
+    </div>
+</div>

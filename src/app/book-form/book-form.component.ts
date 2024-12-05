@@ -7,19 +7,22 @@ import { MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CardModule } from 'primeng/card';
+import { FileSelectEvent } from 'primeng/fileupload';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @Component({
   selector: 'app-book-form',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, ButtonModule, RouterModule, InputTextModule, InputNumberModule, CardModule],
+  imports: [ReactiveFormsModule, FormsModule, ButtonModule, RouterModule, InputTextModule, InputNumberModule, CardModule, FileUploadModule],
   templateUrl: './book-form.component.html',
   styleUrl: './book-form.component.scss'
 })
 export class BookFormComponent {
 
   formBook!: FormGroup;
-  inSaveInPogress: boolean = false;
+  isSaveInProgress: boolean = false;
   edit: boolean = false;
+  selectedFile: File | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -33,19 +36,24 @@ export class BookFormComponent {
       title: ['', Validators.required],
       author: ['', Validators.required],
       pages: [1, [Validators.required, Validators.min(1)]],
-      price: [0, [Validators.required, Validators.min(0)]]
+      price: [0, [Validators.required, Validators.min(0)]],
+      image: [null]
     });
   }
 
   ngOnInit(): void {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
-    if(id !== 'new'){
+    if (id !== 'new') {
       this.edit = true;
       this.getBookById(+id!);
     }
   }
 
-  getBookById(id: number){
+  onFileSelected(event: FileSelectEvent) {
+    this.selectedFile = event.files[0];
+  }
+
+  getBookById(id: number) {
     this.bookService.getBookById(id).subscribe({
       next: (foundBook) => {
         this.formBook.patchValue(foundBook);
@@ -61,8 +69,8 @@ export class BookFormComponent {
     });
   }
 
-  createBook(){
-    if(this.formBook.invalid){
+  createBook() {
+    if (this.formBook.invalid) {
       this.messageService.add({
         severity: 'error',
         summary: 'Error',
@@ -70,19 +78,27 @@ export class BookFormComponent {
       });
       return;
     }
-    this.inSaveInPogress = true;
-    this.bookService.createBook(this.formBook.value).subscribe({
-      next:()=>{
+    if (!this.selectedFile) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Select an image and try again'
+      });
+      return;
+    }
+    this.isSaveInProgress = true;
+    this.bookService.createBook(this.formBook.value, this.selectedFile).subscribe({
+      next: () => {
         this.messageService.add({
           severity: 'success',
           summary: 'Saved',
           detail: 'Book saved successfully'
         });
-        this.inSaveInPogress = false;
+        this.isSaveInProgress = false;
         this.router.navigateByUrl('/')
       },
-      error:() => {
-        this.inSaveInPogress = false;
+      error: () => {
+        this.isSaveInProgress = false;
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
@@ -92,8 +108,39 @@ export class BookFormComponent {
     })
   }
 
-  updateBook(){
-    if(this.formBook.invalid){
+  changeImage(event: FileSelectEvent) {
+    this.selectedFile = event.files[0];
+    if (!this.selectedFile) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Select an image and try again',
+      });
+      return;
+    }
+    this.bookService.updateBookImage(this.formBook.value.id, this.selectedFile).subscribe({
+      next: () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Guardado',
+          detail: 'Book updated successfully',
+        });
+        this.isSaveInProgress = false;
+        this.router.navigateByUrl('/');
+      },
+      error: () => {
+        this.isSaveInProgress = false;
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Review the selected file',
+        });
+      },
+    });
+  }
+
+  updateBook() {
+    if (this.formBook.invalid) {
       this.messageService.add({
         severity: 'error',
         summary: 'Error',
@@ -101,19 +148,19 @@ export class BookFormComponent {
       });
       return;
     }
-    this.inSaveInPogress = true;
+    this.isSaveInProgress = true;
     this.bookService.updateBook(this.formBook.value).subscribe({
-      next:()=>{
+      next: () => {
         this.messageService.add({
           severity: 'success',
           summary: 'Updated',
           detail: 'Book updated successfully'
         });
-        this.inSaveInPogress = false;
+        this.isSaveInProgress = false;
         this.router.navigateByUrl('/')
       },
-      error:() => {
-        this.inSaveInPogress = false;
+      error: () => {
+        this.isSaveInProgress = false;
         this.messageService.add({
           severity: 'error',
           summary: 'Error',

@@ -1,0 +1,19 @@
+<div class="flex flex-column gap-2">
+    <a [routerLink]="['/user-form/new']" class="p-button font-bold w-max"> New User
+    </a>
+    <div class="flex gap-4 flex-wrap">
+        @for (user of users; track user.id) {
+            <p-card header={{user.name}} subheader={{user.paternalSurname}} [style]="{ width: '260px' }">
+                <ng-template pTemplate="footer">
+                    <div class="flex gap-2">
+                        <p-button (onClick)="deleteUser(user.id)" label="Delete" severity="danger" />
+                        <a [routerLink]="['/user-form', user.id]" class="p-button font-bold"> Edit
+                        </a>
+                    </div>
+                </ng-template>
+            </p-card>
+            }@empty {
+                <p>Users not found</p>
+            }
+    </div>
+</div>
