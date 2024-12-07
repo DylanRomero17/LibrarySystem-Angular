@@ -1,0 +1,19 @@
+<div class="flex flex-column gap-2">
+    <a [routerLink]="['/return-form/new']" class="p-button font-bold w-max"> Return
+    </a>
+    <div class="flex gap-4 flex-wrap">
+        @for (returnObj of returns; track returnObj.id) {
+            <p-card header={{returnObj.id}} subheader={{returnObj.status}} [style]="{ width: '260px' }">
+                <ng-template pTemplate="footer">
+                    <div class="flex gap-2">
+                        <p-button (onClick)="deleteReturn(returnObj.id)" label="Delete" severity="danger" />
+                        <a [routerLink]="['/return-form', returnObj.id]" class="p-button font-bold"> Edit
+                        </a>
+                    </div>
+                </ng-template>
+            </p-card>
+            }@empty {
+                <p>Returns not found</p>
+            }
+    </div>
+</div>

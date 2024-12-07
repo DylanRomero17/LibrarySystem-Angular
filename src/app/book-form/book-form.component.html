@@ -18,6 +18,14 @@
                 <p-inputNumber inputId="integeronly" formControlName="price" />
             </div>
             <div class="field flex flex-column gap-1">
+                <label for="price">Available</label>
+                <p-inputNumber inputId="integeronly" formControlName="available" />
+            </div>
+            <div class="field flex flex-column gap-1">
+                <label for="price">Borrowed</label>
+                <p-inputNumber inputId="integeronly" formControlName="borrowed" />
+            </div>
+            <div class="field flex flex-column gap-1">
                 <p-fileUpload 
                     mode="basic" 
                     [chooseLabel]="edit?'Change image':'Choose image'" 

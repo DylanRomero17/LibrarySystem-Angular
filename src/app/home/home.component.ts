@@ -5,11 +5,12 @@ import { BookService } from '../services/book.service';
 import { Book } from '../models/book';
 import { RouterModule } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonModule, CardModule, RouterModule],
+  imports: [ButtonModule, CardModule, RouterModule, TabMenuModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

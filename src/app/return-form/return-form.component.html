@@ -1,0 +1,43 @@
+
+<div class="flex justify-content-center align-items-center min-h-screen w-full">
+    <p-card header="Return Form" class="w-10">
+        <form [formGroup]="formReturn" (ngSubmit)="edit ? updateReturn() : createReturn()" class="flex flex-column gap-2">
+            <div class="field flex flex-column gap-1">
+                <label for="returnDate">Return Date</label>
+                <p-calendar [showIcon]="true" 
+                [showOnFocus]="false"  formControlName="returnDate" />
+            </div>
+            <div class="field flex flex-column gap-1">
+                <label for="status">Return Status</label>
+                <input type="text" pInputText formControlName="status" />
+            </div>
+            <div class="field flex flex-column gap-1">
+                <label for="observation">Observations</label>
+                <input type="text" pInputText formControlName="observation" />
+            </div>
+            <div class="field flex flex-column gap-1">
+                <label for="book">Employees</label>
+                <p-dropdown
+                    [options]="employee"
+                    formControlName="employee"
+                    optionLabel="name"
+                    optionValue="id"
+                    placeholder="Select an employee"
+                ></p-dropdown>
+            </div>
+            <div class="field flex flex-column gap-1">
+                <label for="loan">Loan</label>
+                <p-dropdown
+                    [options]="loans"
+                    formControlName="loan"
+                    optionLabel="id"
+                    optionValue="id"
+                    placeholder="Select an Loan"
+                ></p-dropdown>
+            </div>
+            <div class="flex gap-2">
+                <p-button label="Save." [loading]="isSaveInProgress" type="submit" />
+            </div>
+        </form>
+    </p-card>
+</div>

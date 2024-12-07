@@ -7,4 +7,6 @@ export interface Book {
     pages: number;
     price: number;
     image?: Image;
+    available: number;
+    borrowed: number;
 }

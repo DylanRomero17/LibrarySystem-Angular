@@ -4,16 +4,29 @@
     <div class="flex gap-4 flex-wrap">
         @for (employee of employees; track employee.id) {
             <p-card header={{employee.name}} subheader={{employee.paternalSurname}} [style]="{ width: '260px' }">
-                <ng-template pTemplate="footer">
                     <div class="flex gap-2">
                         <p-button (onClick)="deleteEmployee(employee.id)" label="Delete" severity="danger" />
                         <a [routerLink]="['/employee-form', employee.id]" class="p-button font-bold"> Edit
                         </a>
                     </div>
-                </ng-template>
             </p-card>
             }@empty {
                 <p>Employees not found</p>
             }
     </div>
 </div>
+
+<!-- <p-orderList [value]="employees" [listStyle]="{ height: '25rem' }" header="List of Employees">
+    <ng-template let-employee pTemplate="item">
+        <div class="flex flex-wrap p-2 align-items-center gap-3">
+            <div class="flex-1 flex flex-column gap-2">
+                <span class="font-bold">{{ employee.name }}</span>
+                <span>{{ employee.paternalSurname }}</span>
+                <div class="flex gap-2">
+                    <p-button (onClick)="deleteEmployee(employee.id)" label="Delete" severity="danger" />
+                    <a [routerLink]="['/employee-form', employee.id]" class="p-button font-bold"> Edit</a>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-orderList> -->

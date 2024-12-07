@@ -91,13 +91,12 @@ export class LoanFormComponent implements OnInit {
       user: { id: this.formLoan.value.user },
       employee: { id: this.formLoan.value.employee },
     };
-    console.log(loan);
     this.isSaveInProgress = true;
     this.loanService.createLoan(loan).subscribe({
-      next: () => {
+      next: (createdLoan) => {
         this.messageService.add({severity:'success', summary:'Success', detail: 'Loan created'});
         this.isSaveInProgress = false;
-        this.router.navigate(['/']);
+        this.router.navigate(['/book-loan-form/new', { loanId: createdLoan.id }]);
       },
       error: (err) => {
         console.error(err);

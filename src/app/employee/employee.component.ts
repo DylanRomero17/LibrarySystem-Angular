@@ -5,7 +5,7 @@ import { Employee } from '../models/employee';
 import { EmployeeService } from '../services/employee.service';
 import { MessageService } from 'primeng/api';
 import { CardModule } from 'primeng/card';
-
+import { OrderListModule } from 'primeng/orderlist';
 import { FormsModule, ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
@@ -13,7 +13,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 @Component({
   selector: 'app-employee',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, ButtonModule, RouterModule, InputTextModule, InputNumberModule, CardModule],
+  imports: [OrderListModule, ReactiveFormsModule, FormsModule, ButtonModule, RouterModule, InputTextModule, InputNumberModule, CardModule],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.scss'
 })

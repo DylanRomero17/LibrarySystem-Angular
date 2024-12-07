@@ -37,7 +37,9 @@ export class BookFormComponent {
       author: ['', Validators.required],
       pages: [1, [Validators.required, Validators.min(1)]],
       price: [0, [Validators.required, Validators.min(0)]],
-      image: [null]
+      image: [null],
+      available: [0, [Validators.required, Validators.min(0)]],
+      borrowed: [0, [Validators.required, Validators.min(0)]]
     });
   }
 

@@ -1,16 +1,4 @@
-<div class="flex flex-column gap-2">
-    <a routerLink="book-form/new" class="p-button font-bold w-max">
-        Create new Book
-    </a>
-    <a routerLink="employee" class="p-button font-bold w-max">
-        Employees
-    </a>
-    <a routerLink="user" class="p-button font-bold w-max">
-        Users
-    </a>
-    <a routerLink="loan" class="p-button font-bold w-max">
-        Loans
-    </a>
+<div class="flex flex-column gap-2">    
     <div class="flex gap-4 flex-wrap">
         @for (book of books; track book.id) {
             <p-card header={{book.title}} subheader={{book.author}} [style]="{ width: '260px' }">
@@ -26,7 +14,10 @@
                     Pages: {{book.pages}}
                 </p>
                 <p>
-                    Price:  {{book.price}}$
+                    Available:  {{book.available}}
+                </p>
+                <p>
+                    Borrowed:  {{book.borrowed}}
                 </p>
                 <ng-template pTemplate="footer">
                     <div class="flex gap-2">

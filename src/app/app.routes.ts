@@ -7,10 +7,14 @@ import { UserComponent } from './user/user.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { LoanComponent } from './loan/loan.component';
 import { LoanFormComponent } from './loan-form/loan-form.component';
+import { BookLoanComponent } from './book-loan/book-loan.component';
+import { BookLoanFormComponent } from './book-loan-form/book-loan-form.component';
+import { ReturnComponent } from './return/return.component';
+import { ReturnFormComponent } from './return-form/return-form.component';
 
 export const routes: Routes = [
     {
-        path:'',
+        path:'home',
         component: HomeComponent,
         title: 'Página de inicio'
     },
@@ -48,6 +52,26 @@ export const routes: Routes = [
         path:'loan-form/:id',
         component: LoanFormComponent,
         title: 'Loan Form'
+    },
+    {
+        path:'bookLoan',
+        component: BookLoanComponent,
+        title: 'bookLoan'
+    },
+    {
+        path:'book-loan-form/:id',
+        component: BookLoanFormComponent,
+        title: 'Book-Loan Form'
+    },
+    {
+        path:'return',
+        component: ReturnComponent,
+        title: 'Return'
+    },
+    {
+        path:'return-form/:id',
+        component: ReturnFormComponent,
+        title: 'Return Form'
     },
     {
         path:'**',
