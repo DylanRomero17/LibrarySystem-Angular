@@ -65,7 +65,7 @@ export class UserFormComponent {
       next: () => {
         this.messageService.add({severity:'success', summary:'Correct', detail: 'User created successfully'});
         this.isSaveInProgress = false;
-        this.router.navigate(['/']);
+        this.router.navigate(['/user']);
       },
       error: () => {
         this.isSaveInProgress = false;
@@ -84,7 +84,7 @@ export class UserFormComponent {
       next: () => {
         this.messageService.add({severity:'success', summary:'Correct', detail: 'User updated successfully'});
         this.isSaveInProgress = false;
-        this.router.navigate(['/']);
+        this.router.navigate(['/user']);
       },
       error: () => {
         this.isSaveInProgress = false;

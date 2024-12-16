@@ -14,7 +14,8 @@
                 <input type="text" pInputText formControlName="maternalSurname" />
             </div>
             <div class="flex gap-2">
-                <p-button label="Save." [loading]="isSaveInProgress" type="submit" />
+                <p-button label="Save"  [rounded]="true"  icon="pi pi-save" size="small" [loading]="isSaveInProgress" type="submit" severity="help" />
+                <p-button [routerLink]="['/user']" [rounded]="true"  icon="pi pi-times" size="small"  label="Cancel" severity="warning" />
             </div>
         </form>
     </p-card>

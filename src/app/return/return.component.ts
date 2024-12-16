@@ -3,7 +3,8 @@ import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { CardModule } from 'primeng/card';
-
+import { OrderListModule } from 'primeng/orderlist';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule, ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
@@ -13,7 +14,7 @@ import { ReturnService } from '../services/return.service';
 @Component({
   selector: 'app-return',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, ButtonModule, RouterModule, InputTextModule, InputNumberModule, CardModule],
+  imports: [ReactiveFormsModule, FormsModule, ButtonModule, RouterModule, InputTextModule, InputNumberModule, CardModule, OrderListModule , DragDropModule],
   templateUrl: './return.component.html',
   styleUrl: './return.component.scss'
 })

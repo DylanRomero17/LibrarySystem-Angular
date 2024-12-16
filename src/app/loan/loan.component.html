@@ -1,4 +1,4 @@
-<div class="flex flex-column gap-2">
+<!-- <div class="flex flex-column gap-2">
     <a [routerLink]="['/loan-form/new']" class="p-button font-bold w-max"> New Loan
     </a>
     <div class="flex gap-4 flex-wrap">
@@ -16,4 +16,23 @@
                 <p>Users not found</p>
             }
     </div>
-</div>
+</div> -->
+
+<p-orderList [value]="loans" [listStyle]="{ height: '40rem' }" filterBy="loanStatus" filterPlaceholder="Filter by status">>
+    <ng-template pTemplate = "header" class="flex justify-content-center">
+        <p-button [routerLink]="['/loan-form/new']" size="small" icon="pi pi-plus" label="New Loan" class="font-bold w-max" [outlined]="true" severity="help" /> 
+         <span class="header-title  align-items-center ">List of Loans</span>
+    </ng-template>
+    <ng-template let-loan pTemplate="item">
+        <div class="flex flex-wrap p-2 align-items-center gap-3">
+            <div class="flex-1 flex flex-column gap-2">
+                <span class="font-bold">{{ loan.id }}. {{ loan.loanStatus }} </span>
+                <span>Date: {{ loan.loanDate }}</span>
+                <div class="flex gap-2">
+                    <p-button (onClick)="deleteLoan(loan.id)" [rounded]="true" size="small" icon="pi pi-times" label="Delete" severity="danger" />
+                    <p-button [routerLink]="['/loan-form', loan.id]" [rounded]="true"  icon="pi pi-pencil" size="small"  label="Edit" severity="info" />
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-orderList>

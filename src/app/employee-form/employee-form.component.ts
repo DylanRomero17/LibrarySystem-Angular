@@ -66,7 +66,7 @@ export class EmployeeFormComponent {
       next: () => {
         this.messageService.add({severity:'success', summary:'Success', detail: 'Employee created successfully'});
         this.isSaveInProgress = false;
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/employee');
       },
       error: () => {
         this.isSaveInProgress = false;
@@ -85,7 +85,7 @@ export class EmployeeFormComponent {
       next: () => {
         this.messageService.add({severity:'success', summary:'Updated', detail: 'Employee updated successfully'});
         this.isSaveInProgress = false;
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/employee');
       },
       error: () => {
         this.isSaveInProgress = false;

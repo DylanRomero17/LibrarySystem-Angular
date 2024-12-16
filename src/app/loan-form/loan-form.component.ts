@@ -49,11 +49,11 @@ export class LoanFormComponent implements OnInit {
   ngOnInit(): void {
     this.loadUsers();
     this.loadEmployees();
-    // let id = this.activatedRoute.snapshot.paramMap.get('id');
-    // if (id !== 'new') {
-    //   this.edit = true;
-    //   this.getLoanById(+id!);
-    // }
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id !== 'new') {
+      this.edit = true;
+      this.getLoanById(+id!);
+    }
   }
 
   loadUsers() {
@@ -75,7 +75,7 @@ export class LoanFormComponent implements OnInit {
       },
       error: () => {
         this.messageService.add({severity:'error', summary:'Error', detail: 'Loan not found'});
-        this.router.navigate(['/']);
+        this.router.navigate(['/loan']);
       },
     });
   }
@@ -125,7 +125,7 @@ export class LoanFormComponent implements OnInit {
       next: () => {
         this.messageService.add({severity:'success', summary:'Success', detail: 'Loan updated'});
         this.isSaveInProgress = false;
-        this.router.navigate(['/']);
+        this.router.navigate(['/loan']);
       },
       error: () => {
         this.isSaveInProgress = false;

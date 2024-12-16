@@ -1,4 +1,4 @@
-<div class="flex flex-column gap-2">
+<!-- <div class="flex flex-column gap-2">
     <a [routerLink]="['/employee-form/new']" class="p-button font-bold w-max"> New Employees
     </a>
     <div class="flex gap-4 flex-wrap">
@@ -14,19 +14,23 @@
                 <p>Employees not found</p>
             }
     </div>
-</div>
-
-<!-- <p-orderList [value]="employees" [listStyle]="{ height: '25rem' }" header="List of Employees">
+</div> -->
+<p-orderList [value]="employees" [listStyle]="{ height: '40rem' }" filterBy="name" 
+filterPlaceholder="Filter by name">>
+    <ng-template pTemplate = "header" class="flex justify-content-center">
+        <p-button [routerLink]="['/employee-form/new']" size="small" icon="pi pi-plus" label="New Employee" class="font-bold w-max" [outlined]="true" severity="help" /> 
+         <span class="header-title  align-items-center ">List of Employees</span>
+    </ng-template>
     <ng-template let-employee pTemplate="item">
         <div class="flex flex-wrap p-2 align-items-center gap-3">
             <div class="flex-1 flex flex-column gap-2">
-                <span class="font-bold">{{ employee.name }}</span>
-                <span>{{ employee.paternalSurname }}</span>
+                <span class="font-bold">{{ employee.id }}. {{ employee.name }} </span>
+                <span>{{employee.maternalSurname}} {{ employee.paternalSurname }}</span>
                 <div class="flex gap-2">
-                    <p-button (onClick)="deleteEmployee(employee.id)" label="Delete" severity="danger" />
-                    <a [routerLink]="['/employee-form', employee.id]" class="p-button font-bold"> Edit</a>
+                    <p-button (onClick)="deleteEmployee(employee.id)" [rounded]="true" size="small" icon="pi pi-times" label="Delete" severity="danger" />
+                    <p-button [routerLink]="['/employee-form', employee.id]" [rounded]="true"  icon="pi pi-pencil" size="small"  label="Edit" severity="info" />
                 </div>
             </div>
         </div>
     </ng-template>
-</p-orderList> -->
+</p-orderList>

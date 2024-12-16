@@ -19,14 +19,10 @@
                 <p>
                     Borrowed:  {{book.borrowed}}
                 </p>
-                <ng-template pTemplate="footer">
                     <div class="flex gap-2">
-                        <p-button (onClick)="deleteBook(book.id)" label="Delete" severity="danger" />
-                        <a routerLink="book-form/{{book.id}}" class="p-button font-bold">
-                            Edit
-                        </a>
+                        <p-button (onClick)="deleteBook(book.id)" [rounded]="true" size="small" icon="pi pi-times" label="Delete" severity="danger" />
+                        <p-button [routerLink]="['/book-form', book.id]" [rounded]="true"  icon="pi pi-pencil" size="small"  label="Edit" severity="info" />
                     </div>
-                </ng-template>
             </p-card>
             }@empty {
                 <p>Books not found</p>

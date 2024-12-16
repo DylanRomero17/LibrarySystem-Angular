@@ -38,7 +38,8 @@
                 />
             </div>
             <div class="flex gap-2">
-                <p-button label="Savee" [loading]="isSaveInProgress" type="submit" />
+                <p-button label="Save"  [rounded]="true"  icon="pi pi-save" size="small" [loading]="isSaveInProgress" type="submit" severity="help" />
+                <p-button [routerLink]="['/home']" [rounded]="true"  icon="pi pi-times" size="small"  label="Cancel" severity="warning" />
             </div>
         </form>
     </p-card>

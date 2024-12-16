@@ -1,4 +1,4 @@
-<div class="flex flex-column gap-2">
+<!-- <div class="flex flex-column gap-2">
     <a [routerLink]="['/user-form/new']" class="p-button font-bold w-max"> New User
     </a>
     <div class="flex gap-4 flex-wrap">
@@ -16,4 +16,24 @@
                 <p>Users not found</p>
             }
     </div>
-</div>
+</div> -->
+
+<p-orderList [value]="users" [listStyle]="{ height: '40rem' }" filterBy="name" 
+filterPlaceholder="Filter by name">>
+    <ng-template pTemplate = "header" class="flex justify-content-center">
+        <p-button [routerLink]="['/user-form/new']" size="small" icon="pi pi-plus" label="New User" class="font-bold w-max" [outlined]="true" severity="help" /> 
+         <span class="header-title  align-items-center ">List of Users</span>
+    </ng-template>
+    <ng-template let-user pTemplate="item">
+        <div class="flex flex-wrap p-2 align-items-center gap-3">
+            <div class="flex-1 flex flex-column gap-2">
+                <span class="font-bold">{{ user.id }}. {{ user.name }} </span>
+                <span>{{user.paternalSurname}} {{ user.maternalSurname }}</span>
+                <div class="flex gap-2">
+                    <p-button (onClick)="deleteUser(user.id)" [rounded]="true" size="small" icon="pi pi-times" label="Delete" severity="danger" />
+                    <p-button [routerLink]="['/user-form', user.id]" [rounded]="true"  icon="pi pi-pencil" size="small"  label="Edit" severity="info" />
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-orderList>

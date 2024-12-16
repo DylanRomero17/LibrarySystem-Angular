@@ -1,4 +1,4 @@
-<div class="flex flex-column gap-2">
+<!-- <div class="flex flex-column gap-2">
     <a [routerLink]="['/return-form/new']" class="p-button font-bold w-max"> Return
     </a>
     <div class="flex gap-4 flex-wrap">
@@ -16,4 +16,23 @@
                 <p>Returns not found</p>
             }
     </div>
-</div>
+</div> -->
+
+<p-orderList [value]="returns" [listStyle]="{ height: '40rem' }" filterBy="name" filterPlaceholder="Filter by name">>
+    <ng-template pTemplate = "header" class="flex justify-content-center">
+        <p-button [routerLink]="['/return-form/new']" size="small" icon="pi pi-plus" label="New Return" class="font-bold w-max" [outlined]="true" severity="help" /> 
+         <span class="header-title  align-items-center ">List of Returns</span>
+    </ng-template>
+    <ng-template let-returnObj pTemplate="item">
+        <div class="flex flex-wrap p-2 align-items-center gap-3">
+            <div class="flex-1 flex flex-column gap-2">
+                <span class="font-bold">{{ returnObj.id }}. {{ returnObj.status }} </span>
+                <span>Return Date: {{returnObj.returnDate}} </span>
+                <div class="flex gap-2">
+                    <!-- <p-button (onClick)="deleteReturn(returnObj.id)" [rounded]="true" size="small" icon="pi pi-times" label="Delete" severity="danger" /> -->
+                    <!-- <p-button [routerLink]="['/return-form', returnObj.id]" [rounded]="true"  icon="pi pi-pencil" size="small"  label="Edit" severity="info" /> -->
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-orderList>

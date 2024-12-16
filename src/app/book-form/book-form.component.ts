@@ -66,7 +66,7 @@ export class BookFormComponent {
           summary: 'Error',
           detail: 'Book not found'
         });
-        this.router.navigateByUrl('/')
+        this.router.navigateByUrl('/home')
       },
     });
   }
@@ -97,7 +97,7 @@ export class BookFormComponent {
           detail: 'Book saved successfully'
         });
         this.isSaveInProgress = false;
-        this.router.navigateByUrl('/')
+        this.router.navigateByUrl('/home')
       },
       error: () => {
         this.isSaveInProgress = false;
@@ -128,7 +128,7 @@ export class BookFormComponent {
           detail: 'Book updated successfully',
         });
         this.isSaveInProgress = false;
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/home');
       },
       error: () => {
         this.isSaveInProgress = false;
@@ -159,7 +159,7 @@ export class BookFormComponent {
           detail: 'Book updated successfully'
         });
         this.isSaveInProgress = false;
-        this.router.navigateByUrl('/')
+        this.router.navigateByUrl('/home')
       },
       error: () => {
         this.isSaveInProgress = false;

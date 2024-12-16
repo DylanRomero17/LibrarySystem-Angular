@@ -96,7 +96,7 @@ export class BookLoanFormComponent {
           summary: 'Error',
           detail: 'Could not get book loan'
         });
-        this.router.navigate(['/']);
+        this.router.navigate(['/bookLoan']);
       },
     });
   }
@@ -165,7 +165,7 @@ export class BookLoanFormComponent {
           detail: 'Book loan updated'
         });
         this.isSaveInProgress = false;
-        this.router.navigate(['/']);
+        this.router.navigate(['/bookLoan']);
       },
       error: () => {
         this.isSaveInProgress = false;
