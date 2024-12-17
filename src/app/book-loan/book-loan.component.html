@@ -29,8 +29,8 @@
                 <span class="font-bold">{{ bookLoan.id }}. {{ bookLoan.status }} </span>
                 <span>Return Date: {{bookLoan.returnDate}}</span>
                 <div class="flex gap-2">
-                    <p-button (onClick)="deleteBookLoan(bookLoan.id)" [rounded]="true" size="small" icon="pi pi-times" label="Delete" severity="danger" />
-                    <p-button [routerLink]="['/book-loan-form', bookLoan.id]" [rounded]="true"  icon="pi pi-pencil" size="small"  label="Edit" severity="info" />
+                    <!-- <p-button (onClick)="deleteBookLoan(bookLoan.id)" [rounded]="true" size="small" icon="pi pi-times" label="Delete" severity="danger" />
+                    <p-button [routerLink]="['/book-loan-form', bookLoan.id]" [rounded]="true"  icon="pi pi-pencil" size="small"  label="Edit" severity="info" /> -->
                 </div>
             </div>
         </div>
